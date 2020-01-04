@@ -56,4 +56,22 @@ function Controller:update(dt)
     end
 end
 
+function Controller:keypressed(key)
+    if (key == "space") then
+        for _, e in ipairs(self.pool) do
+            local position = e[Components.position]
+            local controllable = e[Components.controllable]
+            local facing = e[Components.facing]
+
+            if (facing) then
+                local x = facing.facing == "left" and -1 or facing.facing == "right" and 1 or 0
+                local y = facing.facing == "up" and -1 or facing.facing == "down" and 1 or 0
+
+                Entity(self:getWorld())
+                :assemble(controllable.assemblage, Vector(position.tilePosition.x + x * 64, position.tilePosition.y + y * 64))
+            end
+        end
+    end
+end
+
 return Controller

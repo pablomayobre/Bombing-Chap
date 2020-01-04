@@ -1,4 +1,5 @@
-local Controllable = Component(function(c, animateOnStep)
+local Controllable = Component(function(c, assemblage, animateOnStep)
+    c.assemblage    = assemblage
     c.animateOnStep = animateOnStep
 end)
 
