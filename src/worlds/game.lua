@@ -1,9 +1,8 @@
-local Concord = require("lib.concord")
-
-local World = Concord.world()
+local Game = World()
 :addSystems(
-    Concord.systems.controller,
-    Concord.systems.textureRenderer
+    Systems.controller,
+    Systems.textureUpdater,
+    Systems.textureRenderer
 )
 
-return World
+return Game
