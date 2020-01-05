@@ -35,8 +35,8 @@ function Controller:update(dt)
                 position.oldTilePosition.x = position.tilePosition.x
                 position.oldTilePosition.y = position.tilePosition.y
 
-                position.tilePosition.x = position.tilePosition.x + (x * 64)
-                position.tilePosition.y = position.tilePosition.y + (y * 64)
+                position.tilePosition.x = position.tilePosition.x + x
+                position.tilePosition.y = position.tilePosition.y + y
 
                 position.progress = 0
 
@@ -68,7 +68,7 @@ function Controller:keypressed(key)
                 local y = facing.facing == "up" and -1 or facing.facing == "down" and 1 or 0
 
                 Entity(self:getWorld())
-                :assemble(controllable.assemblage, Vector(position.tilePosition.x + x * 64, position.tilePosition.y + y * 64))
+                :assemble(controllable.assemblage, Vector(position.tilePosition.x + x, position.tilePosition.y + y))
             end
         end
     end

@@ -17,10 +17,18 @@ Concord.loadSystems    ("src/systems")
 Concord.loadWorlds     ("src/worlds")
 Concord.loadAssemblages("src/assemblages")
 
-local ImageSet = require("src.imageSet")
+Map = require("src.map")
 
-Entity(Worlds.game):assemble(Assemblages.player, Vector(64, 64))
-Entity(Worlds.game):assemble(Assemblages.bomb, Vector(256, 128))
+cartesianDirections = {
+    Vector( 0, -1),
+    Vector( 0,  1),
+    Vector(-1,  0),
+    Vector( 1,  0),
+}
+
+
+Entity(Worlds.game):assemble(Assemblages.player, Vector(1, 1))
+Entity(Worlds.game):assemble(Assemblages.bomb, Vector(4, 4))
 
 function love.update(dt)
     Worlds.game:emit("update", dt)

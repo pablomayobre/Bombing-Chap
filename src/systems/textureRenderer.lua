@@ -15,7 +15,7 @@ function TextureRenderer:draw()
 
         local image, flip, origin = texture.imageSet:getCurrentFrame()
 
-        love.graphics.draw(image, x, y, nil, flip and -1 or 1, 1, 32, origin.y)
+        love.graphics.draw(image, x * 64 - 32, y * 64 - 32, nil, flip and -1 or 1, 1, origin.x, origin.y)
     end
 end
 
