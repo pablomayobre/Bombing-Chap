@@ -10,7 +10,7 @@ function Explode:update(dt)
             e:destroy()
         
             local newEntity = Entity(self:getWorld())
-            :assemble(explodeable.assemblage, position.tilePosition, nil, nil, explodeable.assemblage)
+            :assemble(explodeable.assemblage, position.tilePosition, nil, nil, nil, explodeable.assemblage)
         end
     end
 end

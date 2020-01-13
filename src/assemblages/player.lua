@@ -52,7 +52,7 @@ local Player = Assemblage(function(e, position)
 	e
 	:give(Components.position, Vector(position and position.x or 0, position and position.y or 0))
     :give(Components.controllable, Assemblages.bomb, true)
-    :give(Components.facing, "down")
+    :give(Components.facing)
     :give(Components.texture, imageSet)
 end)
 

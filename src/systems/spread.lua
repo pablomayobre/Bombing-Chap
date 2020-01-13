@@ -20,13 +20,12 @@ function Spread:update(dt)
 
                 if (not Map.isTileSolid(newX, newY) and not spreadable.visited[newY * 17 + newX]) then
                     local newEntity = Entity(self:getWorld())
-                    newEntity:assemble(spreadable.assemblage, Vector(newX, newY), spreadable.delay, cartesianDirections, spreadable.assemblage, spreadable.visited)
+                    newEntity:assemble(spreadable.assemblage, Vector(newX, newY), spreadable.delay, cartesianDirections, spreadable.depth - 1, spreadable.assemblage, spreadable.visited)
                 end
             end
             
             e
             :remove(Components.spreadable)
-            :ensure(Components.delayedDestroy, 0.2)
         end
     end
 end

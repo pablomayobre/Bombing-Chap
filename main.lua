@@ -27,7 +27,7 @@ cartesianDirections = {
 }
 
 
-Entity(Worlds.game):assemble(Assemblages.player, Vector(1, 1))
+Entity(Worlds.game):assemble(Assemblages.player, Vector(2, 2))
 Entity(Worlds.game):assemble(Assemblages.bomb, Vector(4, 4))
 
 function love.update(dt)

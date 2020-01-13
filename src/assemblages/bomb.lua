@@ -19,6 +19,7 @@ local Bomb = Assemblage(function(e, position)
     :give(Components.texture, imageSet)
     :give(Components.animating)
     :give(Components.explodeable, 1, Assemblages.cartesianExplosion)
+    :give(Components.pushable)
 end)
 
 return Bomb
