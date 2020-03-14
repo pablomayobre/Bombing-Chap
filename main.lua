@@ -6,12 +6,21 @@ Entity     = Concord.entity
 System     = Concord.system
 World      = Concord.world
 
-Concord.loadComponents ("src/components")
-Assemblages = require("src.assemblages")
-
+Concord.utils.loadNamespace("src/components")
+Assemblages = Concord.utils.loadNamespace("src/assemblages", {})
+Systems     = Concord.utils.loadNamespace("src/systems",     {})
 
 Game = World()
-Systems = Concord.loadSystems ("src/systems", Game)
+:addSystems(
+    Systems.controller,
+    Systems.mover,
+    Systems.mapManager,
+    Systems.delayedDestroy,
+    Systems.explode,
+    Systems.spread,
+    Systems.textureUpdater,
+    Systems.textureRenderer
+)
 
 Map = require("src.map")
 
