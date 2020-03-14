@@ -18,24 +18,24 @@ end
 
 for x = 1, Map.width do
     for y = 1, Map.height do
-        Entity(Worlds.game):assemble(Assemblages.floor, Vector(x, y))
+        Entity(Game):assemble(Assemblages.floor, Vector(x, y))
     end
 end
 
 for x = 1,  Map.width do
     for y = 1, Map.height do
         if (x == 1 or x == Map.width or y == 1 or y == Map.height or (x % 2 == 1 and y % 2 == 1)) then
-            Entity(Worlds.game):assemble(Assemblages.wall, Vector(x, y))
+            Entity(Game):assemble(Assemblages.wall, Vector(x, y))
         end
     end
 end
 
 function Map.addToTile(x, y, entity)
-    Map.tiles[x][y]:__add(entity)
+    Map.tiles[x][y]:add(entity)
 end
 
 function Map.removeFromTile(x, y, entity)
-    Map.tiles[x][y]:__remove(entity)
+    Map.tiles[x][y]:remove(entity)
 end
 
 function Map.getTile(x, y)
@@ -78,7 +78,7 @@ function Map.isTileSolid(x, y)
     for i = 1, tile.size do
         local entity = tile[i]
 
-        if entity:has(Components.collideable) then
+        if entity:has("Collideable") then
             return true
         end
     end

@@ -1,4 +1,4 @@
-local Texture = Component(function(c, imageSet, flip)
+local Texture = Component("Texture", function(c, imageSet, flip)
     c.imageSet = imageSet
 end)
 

@@ -1,8 +1,8 @@
-local DelayedDestroy = System({Components.delayedDestroy})
+local DelayedDestroy = System{pool = {"DelayedDestroy"}}
 
 function DelayedDestroy:update(dt)
     for _, e in ipairs(self.pool) do
-        local delayedDestroy = e[Components.delayedDestroy]
+        local delayedDestroy = e.DelayedDestroy
 
         delayedDestroy.timeLeft = delayedDestroy.timeLeft - dt
         if (delayedDestroy.timeLeft <= 0) then

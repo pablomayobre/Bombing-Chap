@@ -1,3 +1,3 @@
-local Pushable = Component()
+local Pushable = Component("Pushable")
 
 return Pushable

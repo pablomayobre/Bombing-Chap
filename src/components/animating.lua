@@ -1,3 +1,1 @@
-local Moving = Component()
-
-return Moving
+Component("Animating")

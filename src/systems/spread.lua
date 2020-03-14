@@ -1,4 +1,4 @@
-local Spread = System({Components.position, Components.spreadable})
+local Spread = System{pool = {"Position", "Spreadable"}}
 
 function Spread:init()
     self.test = true
@@ -6,8 +6,8 @@ end
 
 function Spread:update(dt)
     for _, e in ipairs(self.pool) do
-        local position   = e[Components.position]
-        local spreadable = e[Components.spreadable]
+        local position   = e.Position
+        local spreadable = e.Spreadable
 
         local totalS = love.timer.getTime()
 
@@ -25,7 +25,7 @@ function Spread:update(dt)
             end
             
             e
-            :remove(Components.spreadable)
+            :remove("Spreadable")
         end
     end
 end

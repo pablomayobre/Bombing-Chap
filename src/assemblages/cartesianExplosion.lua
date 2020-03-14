@@ -13,7 +13,7 @@ local imageSet = ImageSet(
     Vector(32, 32)
 )
 
-local CartesianExplosion = Assemblage(function(e, position, delay, directions, depth, assemblage, visited)
+local CartesianExplosion = function(e, position, delay, directions, depth, assemblage, visited)
     visited = visited or {}
     visited[position.y * 17 + position.x] = true
 
@@ -21,14 +21,14 @@ local CartesianExplosion = Assemblage(function(e, position, delay, directions, d
     depth = depth or 5
 
     e
-    :give(Components.position, Vector(position.x, position.y))
-    :give(Components.texture, imageSet)
-    :give(Components.animating)
-    :give(Components.delayedDestroy, delay * 10)
+    :give("Position", Vector(position.x, position.y))
+    :give("Texture", imageSet)
+    :give("Animating")
+    :give("DelayedDestroy", delay * 10)
 
     if (depth > 0) then
-        e:give(Components.spreadable, delay, directions or cartesianDirections, depth, assemblage, visited)
+        e:give("Spreadable", delay, directions or cartesianDirections, depth, assemblage, visited)
     end
-end)
+end
 
 return CartesianExplosion

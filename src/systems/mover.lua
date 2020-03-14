@@ -1,18 +1,18 @@
-local Mover = System({Components.position, Components.moving})
+local Mover = System{pool = {"Position", "Moving"}}
 
 function Mover:update(dt)
     for _, e in ipairs(self.pool) do
-        local position = e[Components.position]
-        local moving   = e[Components.moving]
+        local position = e.Position
+        local moving   = e.Moving
 
         if (moving.progress == 0) then
             local newX, newY = position.tilePosition.x + moving.direction.x, position.tilePosition.y + moving.direction.y
 
-            if (not Map.hasComponent(newX, newY, Components.collideable)) then
+            if (not Map.hasComponent(newX, newY, "Collideable")) then
                 position.oldTilePosition = Vector(position.tilePosition.x, position.tilePosition.y)
                 position.tilePosition = Vector(newX, newY)
             else
-                e:remove(Components.moving)
+                e:remove("Moving")
             end
         end
         
@@ -22,7 +22,7 @@ function Mover:update(dt)
             moving.distance = moving.distance - 1
 
             if (moving.distance == 0) then
-                e:remove(Components.moving)
+                e:remove("Moving")
             else
                 moving.progress = 0
             end

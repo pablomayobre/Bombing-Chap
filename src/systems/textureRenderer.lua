@@ -1,4 +1,4 @@
-local TextureRenderer = System({Components.position, Components.texture})
+local TextureRenderer = System{pool = {"Position", "Texture"}}
 
 local function lerp(a, b, t)
     return a + (b - a) * t
@@ -6,10 +6,10 @@ end
 
 function TextureRenderer:draw()
     for _, e in ipairs(self.pool) do
-        local position = e[Components.position]
-        local texture  = e[Components.texture]
-        local facing   = e[Components.facing]
-        local moving   = e[Components.moving]
+        local position = e.Position
+        local texture  = e.Texture
+        local facing   = e.Facing
+        local moving   = e.Moving
 
         local progress = moving and moving.progress or 1
         

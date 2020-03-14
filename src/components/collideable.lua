@@ -1,3 +1,1 @@
-local Collideable = Component()
-
-return Collideable
+Component("Collideable")

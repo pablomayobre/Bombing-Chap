@@ -1,4 +1,4 @@
-local Moving = Component(function(c, direction, distance)
+local Moving = Component("Moving", function(c, direction, distance)
     c.direction = direction
     c.distance  = distance
     c.progress  = 0

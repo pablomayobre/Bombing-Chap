@@ -1,8 +1,11 @@
-local TextureUpdater = System({Components.texture, Components.animating, "animating"}, {Components.texture, Components.facing, "facing"})
+local TextureUpdater = System{
+    animating = {"Texture", "Animating"},
+    facing = {"Texture", "Facing"}
+}
 
 function TextureUpdater:init()
     self.animating.onEntityRemoved = function(_, e)
-        local texture = e[Components.texture]
+        local texture = e.Texture
 
         texture.imageSet:stop()
     end
@@ -10,8 +13,8 @@ end
 
 function TextureUpdater:update(dt)
     for _, e in ipairs(self.facing) do
-        local texture = e[Components.texture]
-        local facing  = e[Components.facing]
+        local texture = e.Texture
+        local facing  = e.Facing
 
         local facingName
         if (facing.facing.x == 0 and facing.facing.y == -1) then
@@ -28,7 +31,7 @@ function TextureUpdater:update(dt)
     end
 
     for _, e in ipairs(self.animating) do
-        local texture = e[Components.texture]
+        local texture = e.Texture
 
         texture.imageSet:progress(dt)
     end

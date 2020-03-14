@@ -1,9 +1,9 @@
-local Explode = System({Components.position, Components.explodeable})
+local Explode = System{pool = {"Position", "Explodeable"}}
 
 function Explode:update(dt)
     for _, e in ipairs(self.pool) do
-        local position    = e[Components.position]
-        local explodeable = e[Components.explodeable]
+        local position    = e.Position
+        local explodeable = e.Explodeable
 
         explodeable.timeLeft = explodeable.timeLeft - dt
         if (explodeable.timeLeft <= 0) then

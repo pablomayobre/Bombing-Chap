@@ -1,4 +1,4 @@
-local Spreadable = Component(function(c, delay, directions, depth, assemblage, visited)
+local Spreadable = Component("Spreadable", function(c, delay, directions, depth, assemblage, visited)
     c.delay      = delay
     c.timeLeft   = delay
     c.directions = directions

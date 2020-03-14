@@ -48,12 +48,12 @@ local imageSet = ImageSet(
 	Vector(32, 96)
 )
 
-local Player = Assemblage(function(e, position)
+local Player = function(e, position)
 	e
-	:give(Components.position, Vector(position and position.x or 0, position and position.y or 0))
-    :give(Components.controllable, Assemblages.bomb, true)
-    :give(Components.facing)
-    :give(Components.texture, imageSet)
-end)
+	:give("Position", Vector(position and position.x or 0, position and position.y or 0))
+    :give("Controllable", Assemblages.bomb, true)
+    :give("Facing")
+    :give("Texture", imageSet)
+end
 
 return Player

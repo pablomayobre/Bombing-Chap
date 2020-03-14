@@ -5,17 +5,13 @@ Component  = Concord.component
 Entity     = Concord.entity
 System     = Concord.system
 World      = Concord.world
-Assemblage = Concord.assemblage
-
-Components  = Concord.components
-Systems     = Concord.systems
-Worlds      = Concord.worlds
-Assemblages = Concord.assemblages
 
 Concord.loadComponents ("src/components")
-Concord.loadSystems    ("src/systems")
-Concord.loadWorlds     ("src/worlds")
-Concord.loadAssemblages("src/assemblages")
+Assemblages = require("src.assemblages")
+
+
+Game = World()
+Systems = Concord.loadSystems ("src/systems", Game)
 
 Map = require("src.map")
 
@@ -27,19 +23,19 @@ cartesianDirections = {
 }
 
 
-Entity(Worlds.game):assemble(Assemblages.player, Vector(2, 2))
-Entity(Worlds.game):assemble(Assemblages.bomb, Vector(4, 4))
+Entity(Game):assemble(Assemblages.player, Vector(2, 2))
+Entity(Game):assemble(Assemblages.bomb, Vector(4, 4))
 
 function love.update(dt)
-    Worlds.game:emit("update", dt)
+    Game:emit("update", dt)
 end
 
 function love.draw()
-    Worlds.game:emit("draw")
+    Game:emit("draw")
 
-    love.window.setTitle(love.timer.getFPS().. " : " ..#Worlds.game:getEntities())
+    love.window.setTitle(love.timer.getFPS().. " : " ..#Game:getEntities())
 end
 
 function love.keypressed(key)
-    Worlds.game:emit("keypressed", key)
+    Game:emit("keypressed", key)
 end
